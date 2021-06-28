@@ -662,20 +662,20 @@
                         <div class="contact__inputs grid">
                             <div class="contact__content">
                                 <label for="name" class="contact__label">Name</label>
-                                <input type="text" id="name" class="contact__input">
+                                <input type="text" name="name" id="name" class="contact__input" required>
                             </div>
                             <div class="contact__content">
                                 <label for="email" class="contact__label">Email</label>
-                                <input type="email" id="email" class="contact__input">
+                                <input type="email" name="email" id="email" class="contact__input" required>
                             </div>
                         </div>
                         <div class="contact__content">
-                            <label for="project" class="contact__label">Project</label>
-                            <input type="email" id="project" class="contact__input">
+                            <label for="project" class="contact__label">Project | Title</label>
+                            <input type="email" id="project" name="project" class="contact__input" required>
                         </div>
                         <div class="contact__content">
                             <label for="message" class="contact__label">Message</label>
-                            <textarea name="" id="message" cols="0" rows="7" class="contact__input"></textarea>
+                            <textarea name="message" name="message" id="message" cols="0" rows="7" class="contact__input" required></textarea>
                         </div>
                         <div>
                             <a href="javascript:{}"  class="button button--flex" onclick="document.getElementById('my_form').submit();">
