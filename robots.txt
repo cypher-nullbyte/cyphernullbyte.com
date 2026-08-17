@@ -2,7 +2,7 @@
 User-agent: *
 Allow: /
 
-# AI answer-engine / LLM crawlers — explicitly welcomed
+# AI answer-engine / LLM crawlers, explicitly welcomed
 User-agent: GPTBot
 Allow: /
 

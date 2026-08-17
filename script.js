@@ -29,6 +29,39 @@
             });
       }
 
+      /* ---------------- service card accordion ---------------- */
+      var serviceToggles = document.querySelectorAll(".service-card__toggle");
+      var expandAllBtn = document.getElementById("services-expand-all");
+
+      function setCardOpen(toggle, open) {
+            var details = toggle.nextElementSibling;
+            toggle.setAttribute("aria-expanded", open ? "true" : "false");
+            if (details) { details.classList.toggle("is-open", open); }
+      }
+
+      function syncExpandAllLabel() {
+            if (!expandAllBtn || !serviceToggles.length) { return; }
+            var allOpen = Array.prototype.every.call(serviceToggles, function (btn) {
+                  return btn.getAttribute("aria-expanded") === "true";
+            });
+            expandAllBtn.setAttribute("aria-expanded", allOpen ? "true" : "false");
+      }
+
+      serviceToggles.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                  setCardOpen(btn, btn.getAttribute("aria-expanded") !== "true");
+                  syncExpandAllLabel();
+            });
+      });
+
+      if (expandAllBtn) {
+            expandAllBtn.addEventListener("click", function () {
+                  var expand = expandAllBtn.getAttribute("aria-expanded") !== "true";
+                  serviceToggles.forEach(function (btn) { setCardOpen(btn, expand); });
+                  expandAllBtn.setAttribute("aria-expanded", expand ? "true" : "false");
+            });
+      }
+
       /* ---------------- scroll reveal ---------------- */
       var items = document.querySelectorAll(".reveal");
       if ("IntersectionObserver" in window) {

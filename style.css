@@ -1,8 +1,8 @@
 /* =====================================================================
-   CYPHERNULLBYTE — Security & Compliance Services
+   CYPHERNULLBYTE | Security & Compliance Services
    ===================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 /* --------------------------- design tokens --------------------------- */
 
@@ -22,6 +22,8 @@
       --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
       --radius: 3px;
       --max: 1140px;
+      --font-sans: "IBM Plex Sans", ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
       color-scheme: dark;
 }
 
@@ -50,7 +52,7 @@ body {
       margin: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: "Roboto Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+      font-family: var(--font-sans);
       font-weight: 400;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
@@ -73,8 +75,9 @@ img { max-width: 100%; display: block; }
       display: inline-flex;
       align-items: center;
       gap: 10px;
+      font-family: var(--font-mono);
       font-size: 12px;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--accent);
       font-weight: 600;
@@ -108,7 +111,7 @@ h1, h2, h3, h4 { font-weight: 500; letter-spacing: -0.01em; margin: 0; }
       border-bottom: 1px solid var(--border);
 }
 
-/* blur lives on a pseudo-element, not on .nav itself — backdrop-filter on
+/* blur lives on a pseudo-element, not on .nav itself. backdrop-filter on
    .nav would make it a containing block for its position:fixed descendants
    (the mobile menu), collapsing that full-screen drawer down to .nav's own
    68px height. */
@@ -133,9 +136,10 @@ h1, h2, h3, h4 { font-weight: 500; letter-spacing: -0.01em; margin: 0; }
 }
 
 .nav__brand {
-      font-weight: 700;
+      font-family: var(--font-mono);
+      font-weight: 600;
       font-size: 15px;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.02em;
 }
 
 .nav__brand span { color: var(--accent); }
@@ -233,9 +237,10 @@ h1, h2, h3, h4 { font-weight: 500; letter-spacing: -0.01em; margin: 0; }
 }
 
 .hero__kicker {
+      font-family: var(--font-mono);
       font-size: 13px;
       color: var(--text-faint);
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
       margin-bottom: 22px;
 }
 
@@ -266,6 +271,7 @@ h1, h2, h3, h4 { font-weight: 500; letter-spacing: -0.01em; margin: 0; }
 }
 
 .hero__tags span {
+      font-family: var(--font-mono);
       border: 1px solid var(--border);
       padding: 6px 12px;
       border-radius: var(--radius);
@@ -313,6 +319,45 @@ h1, h2, h3, h4 { font-weight: 500; letter-spacing: -0.01em; margin: 0; }
 .section--tight { padding: 96px 0; }
 
 .section__head { max-width: 720px; margin-bottom: 56px; }
+
+.section__head--row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+}
+
+.btn-expand-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex: 0 0 auto;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      background: none;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius);
+      padding: 9px 16px;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      white-space: nowrap;
+}
+
+.btn-expand-all:hover { border-color: var(--accent); background: var(--accent-soft); }
+
+.btn-expand-all .chev {
+      width: 12px;
+      height: 12px;
+      transition: transform 0.25s ease;
+}
+
+.btn-expand-all[aria-expanded="true"] .chev { transform: rotate(180deg); }
+.btn-expand-all .label-collapse { display: none; }
+.btn-expand-all[aria-expanded="true"] .label-expand { display: none; }
+.btn-expand-all[aria-expanded="true"] .label-collapse { display: inline; }
 
 .section__title { font-size: clamp(24px, 3.2vw, 34px); color: var(--text); }
 
@@ -370,8 +415,9 @@ h1, h2, h3, h4 { font-weight: 500; letter-spacing: -0.01em; margin: 0; }
 }
 
 .who-box h3 {
+      font-family: var(--font-mono);
       font-size: 13px;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 16px;
@@ -404,9 +450,10 @@ h1, h2, h3, h4 { font-weight: 500; letter-spacing: -0.01em; margin: 0; }
 }
 
 .engagement-card__num {
+      font-family: var(--font-mono);
       font-size: 12px;
       color: var(--accent);
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       margin-bottom: 18px;
 }
 
@@ -492,6 +539,7 @@ h1, h2, h3, h4 { font-weight: 500; letter-spacing: -0.01em; margin: 0; }
 }
 
 .service-card__num {
+      font-family: var(--font-mono);
       font-size: 12px;
       color: var(--accent);
       font-weight: 600;
@@ -499,10 +547,52 @@ h1, h2, h3, h4 { font-weight: 500; letter-spacing: -0.01em; margin: 0; }
 
 .service-card h3 { font-size: 16px; color: var(--text); }
 
+.service-card__highlight {
+      font-size: 13.5px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin: 0 0 18px;
+}
+
+.service-card__toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+}
+
+.service-card__toggle .chev {
+      width: 11px;
+      height: 11px;
+      transition: transform 0.25s ease;
+}
+
+.service-card__toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
+.service-card__toggle .label-less { display: none; }
+.service-card__toggle[aria-expanded="true"] .label-more { display: none; }
+.service-card__toggle[aria-expanded="true"] .label-less { display: inline; }
+
+.service-card__details {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s ease;
+}
+
+.service-card__details.is-open { grid-template-rows: 1fr; }
+
+.service-card__details-inner { overflow: hidden; }
+
 .service-card ul {
       list-style: none;
       margin: 0;
-      padding: 0;
+      padding: 14px 0 0;
       display: flex;
       flex-direction: column;
       gap: 11px;
@@ -612,6 +702,7 @@ h1, h2, h3, h4 { font-weight: 500; letter-spacing: -0.01em; margin: 0; }
       position: absolute;
       left: 0;
       top: 20px;
+      font-family: var(--font-mono);
       font-size: 12px;
       color: var(--accent);
       font-weight: 600;
@@ -628,8 +719,9 @@ h1, h2, h3, h4 { font-weight: 500; letter-spacing: -0.01em; margin: 0; }
 }
 
 .includes-box h3 {
+      font-family: var(--font-mono);
       font-size: 13px;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 20px;
@@ -674,14 +766,15 @@ h1, h2, h3, h4 { font-weight: 500; letter-spacing: -0.01em; margin: 0; }
       padding-bottom: 44px;
 }
 
-.footer-brand { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+.footer-brand { font-family: var(--font-mono); font-size: 15px; font-weight: 600; margin-bottom: 14px; }
 .footer-brand span { color: var(--accent); }
 
 .footer-col p, .footer-col a { font-size: 13px; color: var(--text-dim); line-height: 1.8; }
 
 .footer-col h4 {
+      font-family: var(--font-mono);
       font-size: 11px;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--text-faint);
       margin-bottom: 16px;
